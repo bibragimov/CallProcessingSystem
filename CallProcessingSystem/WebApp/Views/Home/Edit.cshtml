@@ -1,0 +1,87 @@
+﻿@using Domain.CQRS
+@using Domain.Entities.Enums
+@model Domain.CQRS.Map.UserRequestInfoDto
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    var disabled = Model.Status == RequestStatusType.Registered ? "" : "disabled";
+
+    <div class="form-horizontal">
+        <h4>Редактирование заявки № @Model.Id</h4>
+        <hr/>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.Label("ФИО", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.UserName, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Телефон", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Phone, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Текст обращения", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ComplaintMessage, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Тема", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Theme, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Дата", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.CreateDate, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Исполнитель", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ExecutorName, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Оператор", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.OperatorName, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Статус", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EnumsDropDownListFor(model => model.Status, new {@class = "form-control"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Коментарий", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Comment, new {@class = "form-control", rows = 3})
+                @Html.ValidationMessageFor(model => model.Comment, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Обновить статус" class="btn btn-default @disabled"/>
+            </div>
+        </div>
+    </div>
+}

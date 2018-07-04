@@ -1,0 +1,68 @@
+﻿@using Domain.CQRS
+@model WebApp.Models.IndexViewModel
+
+<h2>
+    Список заявок
+</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ФИО</th>
+                <th>Телефон</th>
+                <th>Сообщение</th>
+                <th>Тема обращения</th>
+                <th>Статус</th>
+                <th>Дата</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ComplaintMessage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Theme)
+                    </td>
+                    <td>
+                        @Html.Label(item.Status.GetEnumDescription())
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDate)
+                    </td>
+
+                    @if (User.IsOperator())
+                    {
+                        <td>
+                            @Html.ActionLink("Просмотр", "Info", "Home", new { id = item.Id }, null)
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.ActionLink("Редактирование", "Edit", "Home", new { id = item.Id }, null)
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div>

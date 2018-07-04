@@ -1,0 +1,141 @@
+﻿@using Domain.CQRS
+@model Domain.CQRS.Map.UserRequestInfoDto
+
+@*<div>
+    <h4>Информация о заказе № @Model.Id</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            ФИО:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            Телефон:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            Сообщение:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplaintMessage)
+        </dd>
+
+        <dt>
+            Тема обращения:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Theme)
+        </dd>
+
+        <dt>
+            Статус:
+        </dt>
+
+        <dd>
+            @Html.Label(Model.Status.GetEnumDescription())
+        </dd>
+
+        <dt>
+            Дата:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            Исполнитель:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExecutorName)
+        </dd>
+
+        <dt>
+            Оператор:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatorName)
+        </dd>
+
+        <dt>
+            Коментарий:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+</div>*@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Информация о заказе № @Model.Id</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class=" col-md-9 col-lg-9 ">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td>ФИО:</td>
+                            <td>@Html.DisplayFor(model => model.UserName)</td>
+                        </tr>
+                        <tr>
+                            <td>Телефон:</td> 
+                            <td>@Html.DisplayFor(model => model.Phone)</td>
+                        </tr>
+                        <tr>
+                            <td>Сообщение:</td>
+                            <td>@Html.DisplayFor(model => model.ComplaintMessage)</td>
+                        </tr>
+
+                        <tr>
+                            <td>Тема обращения:</td>
+                            <td>@Html.DisplayFor(model => model.Theme)</td>
+                        </tr>
+                            
+                        <tr>
+                            <td>Статус:</td>
+                            <td>@Html.Label(Model.Status.GetEnumDescription())</td>
+                        </tr>
+                            
+                        <tr>
+                            <td>Дата:</td>
+                            <td>@Html.DisplayFor(model => model.CreateDate)</td>
+                        </tr>
+                            
+                        <tr>
+                            <td>Исполнитель:</td>
+                            <td>@Html.DisplayFor(model => model.ExecutorName)</td>
+                        </tr>
+                            
+                        <tr>
+                            <td>Оператор:</td>
+                            <td>@Html.DisplayFor(model => model.OperatorName)</td>
+                        </tr>
+                            
+                        <tr>
+                            <td>Коментарий:</td>
+                            <td>@Html.DisplayFor(model => model.Comment)</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
